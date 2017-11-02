@@ -8,7 +8,7 @@ public class BillingNotFoundException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    public BillingNotFoundException(Integer id) {
+    public BillingNotFoundException(Long id) {
         super("No such entity: " + id);
     }
 }

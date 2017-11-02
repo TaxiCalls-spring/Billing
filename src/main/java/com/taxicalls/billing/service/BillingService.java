@@ -47,7 +47,7 @@ public class BillingService {
         return billings;
     }
 
-    public Billing getBilling(Integer id) {
+    public Billing getBilling(Long id) {
         Billing billing = billingRepository.findOne(id);
         return billing;
     }
