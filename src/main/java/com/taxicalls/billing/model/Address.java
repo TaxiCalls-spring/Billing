@@ -5,24 +5,45 @@
  */
 package com.taxicalls.billing.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author romulo
  */
-public class Address {
+public class Address implements Serializable {
 
-    private final Coordinate coordinate;
-
-    public Address(Coordinate coordinate) {
-        this.coordinate = coordinate;
-    }
+    private Long id;
+    private Long longitude;
+    private Long latitude;
 
     public Address() {
-        this.coordinate = null;
     }
 
     public Coordinate getCoordinate() {
-        return coordinate;
+        return new Coordinate(longitude, latitude);
     }
 
+    public void setCoordinate(Coordinate coordinate) {
+        this.latitude = coordinate.getLatitude();
+        this.longitude = coordinate.getLongitude();
+    }
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Address)) {
+            return false;
+        }
+        Address other = (Address) obj;
+        return Objects.equals(this.getId(), other.getId());
+    }
 }

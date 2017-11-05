@@ -17,7 +17,9 @@ public class Trip implements Serializable {
     private Long id;
     private Address addressFrom;
     private Address addressTo;
+    private Driver driver;
     private Set<Passenger> passengers;
+    private Progress progress;
 
     protected Trip() {
     }
@@ -36,6 +38,14 @@ public class Trip implements Serializable {
 
     public Address getAddressTo() {
         return addressTo;
+    }
+
+    public Progress getProgress() {
+        return progress;
+    }
+
+    public Driver getDriver() {
+        return driver;
     }
 
     public Set<Passenger> getPassengers() {

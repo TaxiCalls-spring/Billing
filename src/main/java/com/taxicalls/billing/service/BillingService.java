@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.taxicalls.billing.repository.BillingRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -32,6 +33,7 @@ public class BillingService {
         LOGGER.log(Level.INFO, "BillingRepository says system has {0} accounts", billingRepository.count());
     }
 
+    @Transactional
     public Billing createBilling(Billing billing) {
         return billingRepository.save(billing);
     }

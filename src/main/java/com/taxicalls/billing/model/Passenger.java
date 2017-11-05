@@ -6,9 +6,8 @@
 package com.taxicalls.billing.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
@@ -21,28 +20,36 @@ import javax.persistence.NamedQuery;
 public class Passenger implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String email;
-    private String password;
-
-    protected Passenger() {
-    }
-
-    public Passenger(Long id) {
-        this.id = id;
-    }
 
     public Long getId() {
         return id;
     }
 
-    public String getEmail() {
-        return email;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getPassword() {
-        return password;
+    public void setEmail(String email) {
+    }
+    
+    public void setPassword(String password) {
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Passenger)) {
+            return false;
+        }
+        Passenger other = (Passenger) obj;
+        return getId().equals(other.getId());
     }
 
 }
